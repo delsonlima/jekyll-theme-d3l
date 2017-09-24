@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<div class="home">
+
+  {% assign langs = site.data.config.langs | default: site.theme_config.langs %}
+  {% assign default_lang = site.lang | default: "en" %}
+  <header class="page-header">
+    <h1 class="page-heading">{% include localized_string.html string="Choose Language" lang=lang %}</h1>
+  </header>
+  <ul class="lang-list">
+    {% if langs %}
+      {% for lang in langs %}
+        <li>
+          <a href="{{ lang[0] | relative_url }}">{{ lang[1] | default: lang[0] }}</a>
+        </li>
+      {% endfor %}
+    {% else %}
+      <li>
+        <a href="{{ '/en' | relative_url }}">english</a>
+      </li>
+    {% endif %}
+  </ul>
+
+  {{ content }}
+</div>

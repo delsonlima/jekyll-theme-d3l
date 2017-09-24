@@ -1,0 +1,10 @@
+username:
+  name: Your Name
+  image:
+  # you can add description in multiple languages by adding a child to "description", with language code. e.g. "en"
+  description:
+    en: your description
+  links:
+    site: https://example.com
+    github: https://github.com/{username}
+    twitter: https://twitter.com/{username}

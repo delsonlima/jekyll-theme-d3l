@@ -1,1 +1,11 @@
-<a href="https://github.com/{{ include.username }}"><span class="icon icon--github">{% include icon-github.svg %}</span><span class="username">{{ include.username }}</span></a>
+{% assign bitmap_mode = site.data.config.bitmap_mode | default: site.bitmap_mode %}
+<a href="https://github.com/{{ include.username }}">
+  <span class="icon icon--github">
+    {% if bitmap_mode == true %}
+      <img src="/assets/icons/icon-github.png"/>
+    {% else %}
+      {% include icon-github.svg %}
+    {% endif %}
+  </span>
+  <span class="username">{{ include.username }}</span>
+</a> 

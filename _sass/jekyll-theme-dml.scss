@@ -10,13 +10,17 @@ $base-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
 
-$text-color:       #111 !default;
-$background-color: #fdfdfd !default;
-$brand-color:      #2a7ae2 !default;
+$text-color:       #fff !default; //#111 !default;
+$background-color: #282828 !default; //#fdfdfd !default;
+$brand-color:      #800 !default; //#2a7ae2 !default;
 
-$grey-color:       #828282 !default;
-$grey-color-light: lighten($grey-color, 40%) !default;
-$grey-color-dark:  darken($grey-color, 25%) !default;
+$grey-color:       #7b7b7b !default; //#828282 !default;
+$grey-color-light: #bbb !default; //lighten($grey-color, 40%) !default;
+$grey-color-dark:  #666 !default; //darken($grey-color, 25%) !default;
+
+$border-color: darken($grey-color, 28%) !default;
+$border-color-dark: darken($grey-color-dark, 28%) !default; //#464646 !default;
+$border-color-light: darken($grey-color-light, 28%) !default;
 
 // Width of the content area
 $content-width:    800px !default;
@@ -43,7 +47,7 @@ $on-laptop:        800px !default;
 
 // Import partials.
 @import
-  "minima/base",
-  "minima/layout",
-  "minima/syntax-highlighting"
+  "jekyll-theme-dml/base",
+  "jekyll-theme-dml/layout",
+  "jekyll-theme-dml/syntax-highlighting"
 ;

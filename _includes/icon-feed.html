@@ -1,0 +1,11 @@
+{% assign bitmap_mode = site.data.config.bitmap_mode | default: site.theme_config.bitmap_mode %}
+<a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}">
+  <span class="icon icon--feed">
+    {% if bitmap_mode == true %}
+      <img src="/assets/icons/icon-feed.png"/>
+    {% else %}
+      {% include icon-feed.svg %}
+    {% endif %}
+  </span>
+  <span>feed</span>
+</a>

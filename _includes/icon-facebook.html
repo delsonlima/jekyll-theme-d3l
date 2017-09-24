@@ -1,10 +1,10 @@
 {% assign bitmap_mode = site.data.config.bitmap_mode | default: site.theme_config.bitmap_mode %}
-<a href="https://twitter.com/{{ include.username }}">
-  <span class="icon icon--twitter">
+<a href="https://facebook.com/{{ include.username }}">
+  <span class="icon icon--facebook">
     {% if bitmap_mode == true %}
-      <img src="/assets/icons/icon-twitter.png"/>
+      <img src="/assets/icons/icon-facebook.png"/>
     {% else %}
-      {% include icon-twitter.svg %}
+      {% include icon-facebook.svg %}
     {% endif %}
   </span>
   <span class="username">{{ include.username }}</span>

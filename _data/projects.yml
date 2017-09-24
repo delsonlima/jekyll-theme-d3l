@@ -1,0 +1,10 @@
+project:
+  name:
+  description:
+    en: "project details"
+    pt: "detalhes do projeto"
+  icon:
+  url: https://github.com/user/project
+  link:
+    en: /en/projects/project
+    pt: /pt/projetos/project

@@ -1,0 +1,36 @@
+---
+layout: page
+---
+<div class="post-content">
+  {{ content }}
+</div>
+
+{% assign default_lang = site.lang | default: "en" %}
+{% assign lang = page.lang | default: default_lang %}
+
+{% for author in site.data.authors %}
+  <h4>{% if author[1].image %}<img src="{{ author[1].image }}" class="user-image"/>{% endif %}<span class="user-name">{{ author[1].name }}</span></h4>
+
+  <ul>
+    {% if author[1].description %}
+      {% if author[1].description.first %}
+        <li>{% include localized_string.html string="description" %}: {{ author[1].description[lang] | default: author[1].description[default_lang] }}</li>
+      {% else %}
+        <li>{% include localized_string.html string="description" %}: {{ author[1].description }}</li>
+      {% endif %}
+    {% endif %}
+
+    {% if author[1].bio %}
+      <li>{% include localized_string.html string="bio" %}: {{ author[1].bio }}</li>
+    {% endif %}
+
+    {% if author[1].links.first %}
+      <li>{% include localized_string.html string="links" %}:</li>
+      <ul>
+      {% for author_link in author[1].links %}
+        <li>{{ author_link[0] }}: <a href="{{ author_link[1] }}">{{ author_link[1] }}</a></li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  </ul>
+{% endfor %}

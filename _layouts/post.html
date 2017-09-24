@@ -7,19 +7,45 @@ layout: default
     <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        {{ page.date | date: date_format }}
+        {% include date.html date=page.date %}
       </time>
-      {% if page.author %}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-      {% endif %}</p>
+      {% include author.html author=page.author %}
+    </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
-
-  {% if site.disqus.shortname %}
-    {% include disqus_comments.html %}
-  {% endif %}
 </article>
+
+<!-- prev/next links -->
+<div class="pagination">
+  {% for post in site.posts %}
+    {% if post.lang == page.lang %}
+      {% if prev %}
+        <a href="{{ post.url }}" class="previous">&laquo; {% include localized_string.html string="Previous" %}</a>
+      {% endif %}
+      {% assign prev = false %}
+      {% if post.id == page.id %}
+        {% assign prev = true %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% for post in site.posts reversed %}
+    {% if post.lang == page.lang %}
+      {% if next %}
+        <a href="{{ post.url }}" class="next">{% include localized_string.html string="Next" %} &raquo;</a>
+        {% break %}
+      {% endif %}
+      {% assign next = false %}
+      {% if post.id == page.id %}
+        {% assign next = true %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% if site.disqus.shortname %}
+  {% include disqus_comments.html %}
+{% endif %}

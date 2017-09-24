@@ -1,0 +1,23 @@
+{% assign default_author = site.data.config.default_author | default: site.theme_config.default_author %}
+{% assign github_username = site.github.owner_name %}
+{% assign author_name = include.author | default: default_author | default: github_username %}
+{% assign author = site.data.authors[author_name] %}
+{% assign author_link = author.links.first[1] %}
+
+{% if author_name %}
+  •
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span itemprop="name">
+
+      {% if author %}
+        {% if author_link %}
+          <a href="{{ author_link }}" title="{{ author.name }}">{{ author.name }}</a>
+        {% else %}
+          {{ author.name }}
+        {% endif %}
+      {% else %}
+        {{ author_name | default: "unknown author" }}
+      {% endif %}
+    </span>
+  </span>
+{% endif %}

@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<div class="home">
+
+  {% assign default_lang = site.lang | default: "en" %}
+  {% assign page_lang = page.lang | default: default_lang %}
+  <header class="page-header">
+    <h1 class="page-heading">{% include localized_string.html string="Posts" %}</h1>
+  </header>
+
+  {{ content }}
+
+  <ul class="post-list">
+    {% assign posts = site.posts | where: "lang", page_lang %}
+    {% for post in posts %}
+      <li>
+        <span class="post-meta">
+          {% include date.html date=post.date %}
+          {% include author.html author=post.author %}
+        </span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+
+        <p>
+          {% assign excerpt = post.excerpt | strip_html %}
+          {% assign size = post.content | strip_html | size %}
+          {{ excerpt }}
+          {% if excerpt.size < size %}
+            ... <a href="{{ post.url | relative_url }}">{% include localized_string.html string="read more" %}</a>
+          {% endif %}
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

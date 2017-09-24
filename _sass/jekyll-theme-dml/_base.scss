@@ -1,4 +1,10 @@
 /**
+ * Correct tag display mode on older browsers
+ */
+main { display: block; }
+
+
+/**
  * Reset some basic elements
  */
 body, h1, h2, h3, h4, h5, h6,
@@ -37,6 +43,15 @@ ul, ol, dl, figure,
   margin-bottom: $spacing-unit / 2;
 }
 
+hr {
+  margin-bottom: $spacing-unit / 2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  & + hr {
+    margin-top: -$spacing-unit / 2;
+  }
+}
 
 
 /**
@@ -91,15 +106,15 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: $brand-color;
+  color: $grey-color-light; //$brand-color;
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: current-color
   }
 
   &:hover {
-    color: $text-color;
+    color: $grey-color; //$text-color;
     text-decoration: underline;
   }
 
@@ -137,9 +152,9 @@ blockquote {
 pre,
 code {
   @include relative-font-size(0.9375);
-  border: 1px solid $grey-color-light;
+  border: 1px solid $grey-color-dark; //$grey-color-light;
   border-radius: 3px;
-  background-color: #eef;
+  background-color: #222; //#eef;
 }
 
 code {
@@ -163,6 +178,7 @@ pre {
  * Wrapper
  */
 .wrapper {
+  max-width: 740px;
   max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
   max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
   margin-right: auto;

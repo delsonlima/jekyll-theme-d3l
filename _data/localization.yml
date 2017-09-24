@@ -1,0 +1,14 @@
+lang: en
+# you can choose a date format to whole site placing it as a string to "date_format". e.g.: "%b %d, %Y"
+# or choose a format for each language by placing a string to a child of "date_format", with language code. e.g.: "pt". As follows:
+#date_format:
+#  pt: "%d %b, %Y"
+
+# you can write a localized description by adding a string to a child of "description" object, with language code. e.g.: "pt". As follows:
+#description:
+#  pt: your localized description
+
+# here you can translate the site strings by placing a string to a child of "strings", with language code. e.g.: "pt". As follows:
+#strings:
+#  read_more:
+#    pt: "continuar lendo"

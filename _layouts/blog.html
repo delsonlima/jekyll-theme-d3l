@@ -1,0 +1,60 @@
+---
+layout: default
+---
+<div class="home">
+
+  <header class="page-header">
+    <h1 class="page-heading">{% include localized_string.html string="Posts" %}</h1>
+  </header>
+
+  {{ content }}
+
+  <ul class="post-list">
+    {% assign posts = paginator.posts | default: site.posts %}
+    {% for post in posts %}
+      <li>
+        <span class="post-meta">
+          {% include date.html date=post.date %}
+          {% include author.html author=post.author %}
+        </span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+
+        <p>
+          {% assign excerpt = post.excerpt | strip_html %}
+          {% assign size = post.content | strip_html | size %}
+          {{ excerpt }}
+          {% if excerpt.size < size %}
+            ... <a href="{{ post.url | relative_url }}">{% include localized_string.html string="read more" %}</a>
+          {% endif %}
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginator.total_pages > 1 %}
+    <div class="pagination">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="previous">&laquo; {% include localized_string.html string="Previous" %}</a>
+      {% else %}
+        <span class="previous disabled">&laquo; {% include localized_string.html string="Previous" %}</span>
+      {% endif %}
+      <span class="page-number">
+        {% for page in (1..paginator.total_pages) %}
+          {% if paginator.page == page %}
+            <span class="page-link disabled">{{ page }}</span>
+          {% else %}
+            <a href="{{ site.paginate_path | replace: ':num', page | replace: 'page1/', '' }}" class="page-link">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
+      </span>
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="next">{% include localized_string.html string="Next" %} &raquo;</a>
+      {% else %}
+        <span class="next disabled">{% include localized_string.html string="Next" %} &raquo;</span>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
