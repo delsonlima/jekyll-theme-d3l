@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+{% include language.html %}
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ _lang }}">
+  <link rel="alternate" type="text/html" hreflang="{{ _lang }}" href="{{ page.url | replace: page.name, "" | absolute_url }}" />
+  <link rel="self" type="application/atom+xml" href="{{ page.url | absolute_url }}" />
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>{{ site.url }}</id>
+  <title>{{ page.title | default: site.title }}</title>
+  <subtitle>{{ site.data.localization.description[_lang] | default: site.description }}</subtitle>
+  <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+
+  {% assign site_category = site.data.localization.category[_lang] | default: site.data.localization.category | default: site.category %}
+  {% if site_category %}<category term="{{ site_category | xml_escape }}" />{% endif %}
+
+  {% assign site_icon = site.data.config.icon | default: site.theme.icon %}
+  {% if site_icon %}<icon>{{ site_icon }}</icon>{% endif %}
+
+  {% assign site_author = site.data.config.author.name | default: site.data.config.author | default: site.author.name | default: site.author %}
+  {% if site_author %}
+    <author>
+      <name>{{ site.data.authors[site_author].name | default: site.data.authors[site_author] | default: site_author }}</name>
+
+      {% assign site_author_uri = site.data.authors[site_author].links.first[1] | default: site.author.url %}
+      {% if site_author_uri %}<uri>{{ site_author_uri }}</uri>{% endif %}
+
+      {% assign site_author_email = site.data.authors[site_author].email | default: site.author.email %}
+      {% if site_author_email %}<email>{{ site_author_email }}</email>{% endif %}
+    </author>
+  {% endif %}
+
+  {% assign feed_limit = site.data.config.feed_limit | default: site.theme.feed_limit %}
+  {% if _lang %}
+    {% assign posts = site.posts | where: "lang", _lang %}
+  {% else %}
+    {% assign posts = site.posts %}
+  {% endif %}
+  {% for post in posts limit: feed_limit %}
+    <entry xml:lang="{{ post.lang | default: _lang }}">
+      <title type="html">{{ post.title }}</title>
+      <link href="{{ post.url | absolute_url }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
+      <id>{{ post.id | absolute_url }}</id>
+      <published>{{ post.date | date_to_xmlschema }}</published>
+      <updated>{{ post.last_modified_at | date_to_xmlschema }}</updated>
+      <summary>{{ post.excerpt | strip_html | normalize_whitespace | xml_escape }}</summary>
+      <content type="html" xml:base="{{ post.url | absolute_url | xml_escape }}">{{ post.content | strip | xml_escape }}</content>
+
+      {% assign post_author = post.author.name | default: post.author %}
+      {% if post_author %}
+        <author>
+          <name>{{ site.data.authors[post_author].name | default: site.data.authors[post_author] | default: post_author }}</name>
+
+          {% assign post_author_uri = site.data.authors[post_author].links.first[1] | default: post.author.url %}
+          {% if post_author_uri %}<uri>{{ post_author_uri }}</uri>{% endif %}
+
+          {% assign post_author_email = site.data.authors[post_author].email | default: post.author.email %}
+          {% if post_author_email %}<email>{{ post_author_email }}</email>{% endif %}
+        </author>
+      {% endif %}
+    </entry>
+  {% endfor %}
+</feed>

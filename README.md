@@ -30,11 +30,12 @@ Or install it yourself as:
 
 ### Layouts
 
-Currently the following layouts are available: *authors*, *blog*, *default*, *home*, *lang_blog*, *lang_chooser*, *page*, *post* and *projects*:
+Currently the following layouts are available: *authors*, *blog*, *default*, *feed*, *home*, *lang_blog*, *lang_chooser*, *page*, *post* and *projects*:
 
   - `authors` &mdash; automatically generates a list of site's authors using data from `_data/authors.yml`
   - `default` &mdash; default layout used for every other layouts
   Use this if you want to create a new custom layout placing it inside `_layouts` on your site's root directory
+  - `feed` &mdash; create a feed with posts in the same language
   - `lang_chooser` &mdash; generates a page with all languages available and a link for each one
   - `page` &mdash; the pages of your site
   - `post` &mdash; the posts of your site

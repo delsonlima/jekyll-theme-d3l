@@ -1,5 +1,6 @@
 {% assign bitmap_mode = site.data.config.bitmap_mode | default: site.theme_config.bitmap_mode %}
-<a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}">
+{% assign feed_path = site.data.config.feed_path | default: site.theme_config.feed_path | default: site.feed.path %}
+<a href="{{ feed_path | default: '/feed.xml' | relative_url }}">
   <span class="icon icon--feed">
     {% if bitmap_mode == true %}
       <img src="/assets/icons/icon-feed.png"/>
@@ -7,5 +8,5 @@
       {% include icon-feed.svg %}
     {% endif %}
   </span>
-  <span>feed</span>
+  <span>{% include localized_string.html string="feed" %}</span>
 </a>
