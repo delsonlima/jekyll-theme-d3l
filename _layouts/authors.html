@@ -5,16 +5,14 @@ layout: page
   {{ content }}
 </div>
 
-{% assign default_lang = site.lang | default: "en" %}
-{% assign lang = page.lang | default: default_lang %}
-
+{% include language.html %}
 {% for author in site.data.authors %}
   <h4>{% if author[1].image %}<img src="{{ author[1].image }}" class="user-image"/>{% endif %}<span class="user-name">{{ author[1].name }}</span></h4>
 
   <ul>
     {% if author[1].description %}
       {% if author[1].description.first %}
-        <li>{% include localized_string.html string="description" %}: {{ author[1].description[lang] | default: author[1].description[default_lang] }}</li>
+        <li>{% include localized_string.html string="description" %}: {{ author[1].description[_lang] }}</li>
       {% else %}
         <li>{% include localized_string.html string="description" %}: {{ author[1].description }}</li>
       {% endif %}

@@ -5,12 +5,11 @@ layout: page
   {{ content }}
 </div>
 
-{% assign default_lang = site.lang | default: "en" %}
-{% assign lang = page.lang | default: default_lang %}
+{% include language.html %}
 
 {% for project in site.data.projects %}
   {% if project[1].link %}
-    <h4 id="{{ project[0] }}"><a href="{{ project[1].link[lang] | default: project[1].link }}">{{ project[1].name | default: project[0] }}</a></h4>
+    <h4 id="{{ project[0] }}"><a href="{{ project[1].link[_lang] | default: project[1].link }}">{{ project[1].name | default: project[0] }}</a></h4>
   {% else %}
     <h4>{{ project[1].name | default: project[0] }}</h4>
   {% endif %}
@@ -19,7 +18,7 @@ layout: page
     {% if project[1].description %}
       {% if project[1].description.first %}
         <li>{% include localized_string.html string="description" %}:
-        {{ project[1].description[lang] | default: project[1].description[default_lang] }}</li>
+        {{ project[1].description[_lang] }}</li>
       {% else %}
         <li>{% include localized_string.html string="description" %}: {{ project[1].description }}</li>
       {% endif %}

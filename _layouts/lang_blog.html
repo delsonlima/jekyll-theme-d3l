@@ -3,8 +3,7 @@ layout: default
 ---
 <div class="home">
 
-  {% assign default_lang = site.lang | default: "en" %}
-  {% assign page_lang = page.lang | default: default_lang %}
+  {% include language.html %}
   <header class="page-header">
     <h1 class="page-heading">{% include localized_string.html string="Posts" %}</h1>
   </header>
@@ -12,7 +11,7 @@ layout: default
   {{ content }}
 
   <ul class="post-list">
-    {% assign posts = site.posts | where: "lang", page_lang %}
+    {% assign posts = site.posts | where: "lang", _lang %}
     {% for post in posts %}
       <li>
         <span class="post-meta">
