@@ -6,6 +6,16 @@ jekyll-theme-dml is a simple dark theme based on [minima](https://github.com/jek
 
 ## Installation
 
+### GitHub Pages
+
+Add this line to your Jekyll site's `_config.yml`:
+
+```yaml
+remote_theme: delsonlima/jekyll-theme-dml
+```
+
+### Gem
+
 Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby

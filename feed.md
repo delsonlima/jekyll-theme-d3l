@@ -11,6 +11,6 @@ feed:
 ---
 # List of available feeds / Lista dos feeds disponíveis
 
-* [world](/feed.atom) - Posts in every language
+* [world](/feed.atom) - Posts in all available languages
 * [en](/en/feed.atom) - Posts in english
 * [pt](/pt/feed.atom) - Posts em português

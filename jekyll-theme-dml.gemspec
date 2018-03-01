@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-theme-dml"
-  spec.version       = "0.0.1"
+  spec.version       = "0.1.0"
   spec.authors       = ["Delson Lima"]
   spec.email         = ["delsonlima.dev@gmail.com"]
 
@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
     |f| f.match(%r{^(404|assets|_data|_includes|_layouts|_sass|LICENSE|README)}i)
   }
 
-  spec.add_runtime_dependency "jekyll", "~> 3.4"
+  spec.add_runtime_dependency "jekyll", "~> 3.6", ">= 3.6.2"
 
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
