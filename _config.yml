@@ -1,0 +1,38 @@
+title: jekyll-theme-dml
+email: delsonlima.dev@gmail.com
+description: "A simple dark theme with easy multilingual setup"
+twitter_username: delsonlima01
+github_username:  delsonlima
+permalink: /:categories/:year/:month/:title/
+defaults:
+  - scope:
+      path: "en"
+    values:
+      lang: "en"
+      feed: /en/feed.rss
+  - scope:
+      path: "pt"
+    values:
+      lang: "pt"
+      feed: /pt/feed.rss
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+      comments: true
+  - scope:
+      path: "_posts/en"
+    values:
+      lang: "en"
+      permalink: /en/:categories/:year/:month/:title/
+  - scope:
+      path: "_posts/pt"
+    values:
+      lang: "pt"
+      permalink: /pt/:categories/:year/:month/:title/
+
+# Build settings
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock

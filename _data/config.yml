@@ -2,9 +2,10 @@
 # tip: set it to true if want your site to be available to older browsers which doesn't support svg.
 #bitmap_mode: false
 #date_format:
+feed_path: feed/
 
 # here you can add more languages to your site by placing a child to "langs", with language code. e.g.: "pt".
 # you also need to specify its localized name. e.g.: "português" for "pt". ex:
-#langs:
-#  en: english
-#  pt: português
+langs:
+  en: english
+  pt: português

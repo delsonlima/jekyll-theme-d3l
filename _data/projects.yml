@@ -4,7 +4,7 @@ project:
     en: "project details"
     pt: "detalhes do projeto"
   icon:
-  url: https://github.com/user/project
+  url: https://example.com/projects/project
   link:
     en: /en/projects/project
     pt: /pt/projetos/project
