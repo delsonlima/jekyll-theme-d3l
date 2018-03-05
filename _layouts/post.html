@@ -46,6 +46,8 @@ layout: default
   {% endfor %}
 </div>
 
-{% if site.disqus.shortname %}
-  {% include disqus_comments.html %}
+{% if jekyll.environment == "production" or jekyll.environment == 'dotcom' %}
+  {% if site.disqus.shortname and page.comments != false %}
+    {% include disqus_comments.html %}
+  {% endif %}
 {% endif %}

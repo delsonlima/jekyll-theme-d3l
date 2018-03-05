@@ -15,7 +15,9 @@
 
   {% include feed_meta.html %}
 
-  {% if jekyll.environment == 'production' and site.google_analytics %}
-    {% include google-analytics.html %}
+  {% if jekyll.environment == 'production' or jekyll.environment == 'dotcom' %}
+    {% if site.google_analytics %}
+      {% include google-analytics.html %}
+    {% endif %}
   {% endif %}
 </head>
