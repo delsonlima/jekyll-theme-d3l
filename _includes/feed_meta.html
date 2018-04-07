@@ -6,7 +6,6 @@
 {% elsif page_feed %}
   <link type="application/atom+xml" rel="alternate" href="{{ page_feed.path | default: page_feed | relative_url }}" title="{{ page_feed.title | replace: '_title_', site.title | default: site.title | scape }}" />
 {% endif %}
-{% assign feed_path = site.data.config.feed_path | default: site.theme_config.feed_path | default: site.feed.path %}
-{% if feed_path %}
-  <link type="application/atom+xml" rel="alternate" href="{{ site.feed.path | default: '/feed.xml' | relative_url }}" title="{{ site.title | scape }}" />
+{% if site.feed.path %}
+  <link type="application/atom+xml" rel="alternate" href="{{ site.feed.path | relative_url }}" title="{{ site.feed.title | replace: '_title_', site.title | default: site.title | scape }}" />
 {% endif %}
